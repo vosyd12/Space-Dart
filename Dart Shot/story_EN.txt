@@ -1,0 +1,42 @@
+Alien|Wake up, Earthling.| |alice.png|0|0|NOMAL
+Player|Mmm... I can't eat another bite...|Mom, no more food please...|player.png|1|0|NOMAL
+Alien|Wake up, Earthling.| |alice.png|0|0|NOMAL
+Player|Yaaawn... What?|Where am I?!|player.png|1|0|NOMAL
+Alien|Congratulations, Earthling!!|You have been chosen to wager the fate of Earth in a game against us.|alice.png|0|0|NOMAL
+Player|?!?!? Is this some kind of new scam?!|Sir... you look pretty strange. I'm not joining any weird cult.|player.png|1|0|NOMAL
+Alien|Allow me to introduce myself first.|I come from the Milky Way Star in the Andromeda Galaxy.|alice.png|0|0|NOMAL
+Player|Uh... where did you get that cosplay?|What are you even talking about?|player.png|1|0|NOMAL
+Alien|I'm telling you the truth.|Why do Earthlings never believe a single word we say?|alice.png|0|0|NOMAL
+Player|Well, who would believe that?|So where exactly are you from?|player.png|1|0|NOMAL
+Alien|I already told you.|Take a look outside if you still doubt me.|alice.png|0|0|NOMAL
+Player|Outside...? What's out there?|WHAT?! Why am I floating in space?!|player.png|1|0|NOMAL
+Alien|Do you finally believe me?|Good. Now let's get to the real matter.|alice.png|0|0|NOMAL
+Player|Okay... seeing space outside makes this hard to deny...|But why me?!|player.png|1|0|0|NOMAL
+Player|Just send me back to Earth!!|I don't want to die yet!! Please!!|player.png|1|0|NOMAL
+Alien|Such a noisy Earthling.|Perhaps I should simply throw you into space and abduct someone else.|alice.png|0|0|NOMAL
+Player|W-Wait!! Fine! I'll play your game!|I'm way too young to die...|player.png|1|0|NOMAL
+Alien|Now that you've finally calmed down...|We shall settle Earth's fate with a game of darts.|alice.png|0|0|NOMAL
+Alien|Tell me, do you know the basics of darts?| |alice.png|0|0|NOMAL
+Player|No idea.|Isn't darts just throwing something at a board?|player.png|1|0|NOMAL
+Alien|Not at all.|There are several different game modes in darts.|alice.png|0|0|TYPE
+Alien|You've chosen Count Up.|A simple game. Whoever scores the most points within the given number of turns wins.|alice.png|0|100|NOMAL
+Alien|You've chosen Zero-One.|A more strategic game mode.|alice.png|0|200|NOMAL
+Alien|The objective is to reduce your score to exactly zero.|For this match, you'll have a limited number of turns.|alice.png|0|200|NOMAL
+Player|Alright, can we finally start now?| |player.png|1|0|NOMAL
+Alien|Easy there, Earthling.|Right now you know as much about darts as a newborn baby.|alice.png|0|0|NOMAL
+Alien|I'll give you one special advantage.|You may choose the difficulty yourself.|alice.png|0|0|NOMAL
+Player|That sounds fair enough.|You're not secretly rigging the difficulty, are you?|player.png|1|0|NOMAL
+Alien|No need to worry.|If I wanted to cheat, I wouldn't bother giving you a choice.|alice.png|0|0|NOMAL
+Alien|Time is running short.|Choose your difficulty.|alice.png|0|0|STEP
+Player|Alright, I've made my choice.|There's nothing else to explain, right?|player.png|1|0|NOMAL
+Alien|Not quite.|You still need to learn the controls.|alice.png|0|0|NOMAL
+Player|There's even more?|My parents are still waiting for me back on Earth!|player.png|1|0|NOMAL
+Alien|This won't take long.|Move your dart using {KEY_MOVE_UP}, {KEY_MOVE_DOWN}, {KEY_MOVE_LEFT}, {KEY_MOVE_RIGHT}, or the mouse.|alice.png|0|0|NOMAL
+Alien|Select your item slot with {KEY_ITEM0}, {KEY_ITEM1}, {KEY_ITEM2}, {KEY_ITEM3}, or {KEY_ITEM4}.|Use the selected item with {KEY_USEITEM}.|alice.png|0|0|NOMAL
+Alien|Switch the camera view with {KEY_VIEW}.|Change the control mode with {KEY_CONTROL_CHANGE}.|alice.png|0|0|NOMAL
+Alien|Throw the dart using {KEY_FIRE}.|Once you've thrown it, you can't use items until the turn ends.|alice.png|0|0|NOMAL
+Alien|If you need a break, press {KEY_PAUSE}.|I'll wait... for a little while.|alice.png|0|0|NOMAL
+Alien|That concludes everything you need to know.|Now it's time to see what you're truly capable of.|alice.png|0|0|NOMAL
+Player|......|The more I think about it... the crazier this situation feels.|player.png|1|0|NOMAL
+Player|But there's no turning back now.|Alright... I'll fight for Earth!|player.png|1|0|NOMAL
+Alien|Excellent, Earthling.|Now... show me the strength of your world.|alice.png|0|0|END

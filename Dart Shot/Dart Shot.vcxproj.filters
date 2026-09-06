@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일\Core">
+      <UniqueIdentifier>{e43a3adc-3d77-4d70-bb25-5fc8376cd9cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Entity">
+      <UniqueIdentifier>{82435fa2-0a48-408e-8292-1a64492e90c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Component">
+      <UniqueIdentifier>{be676274-18be-4911-860e-6df39a1f19d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\System">
+      <UniqueIdentifier>{b127b65b-904b-415e-8f0c-4493b9b423b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Core">
+      <UniqueIdentifier>{5d922405-6979-44d8-9b67-5caae4a5bb46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Entity">
+      <UniqueIdentifier>{8c318f1d-3519-4ef6-b843-85a6a96e6a37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Component">
+      <UniqueIdentifier>{ea7006c5-bb92-41ea-b44d-197322820b21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\System">
+      <UniqueIdentifier>{3fc22ef6-b244-4554-ad36-a6da8c0a7016}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\CScene">
+      <UniqueIdentifier>{d7e4efa1-395a-4525-bb87-8e34e91e8a07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\CScene">
+      <UniqueIdentifier>{ec1c4a41-b0d9-47b7-937e-61e83b471b7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\System\CD3D">
+      <UniqueIdentifier>{6e61fe8a-cfa9-4574-80e6-a92121f4f6e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\System\CD3D">
+      <UniqueIdentifier>{706539bc-ccfd-45c5-aab9-a69fe9df0a51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\AI">
+      <UniqueIdentifier>{efe96229-a4aa-410d-9bba-13504c816fa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\AI">
+      <UniqueIdentifier>{a557abfd-bf81-479d-aaee-d1c454665a7a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CGameManager.h">
+      <Filter>헤더 파일\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CCom.h">
+      <Filter>헤더 파일\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayer.h">
+      <Filter>헤더 파일\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="CDart.h">
+      <Filter>헤더 파일\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="CTarget.h">
+      <Filter>헤더 파일\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="CItem.h">
+      <Filter>헤더 파일\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="CStatus.h">
+      <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyProc.h">
+      <Filter>헤더 파일\System</Filter>
+    </ClInclude>
+    <ClInclude Include="WinProc.h">
+      <Filter>헤더 파일\System</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollision.h">
+      <Filter>헤더 파일\System</Filter>
+    </ClInclude>
+    <ClInclude Include="CEffect.h">
+      <Filter>헤더 파일\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>헤더 파일\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>헤더 파일\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CTitleScene.h">
+      <Filter>헤더 파일\CScene</Filter>
+    </ClInclude>
+    <ClInclude Include="CSettingScene.h">
+      <Filter>헤더 파일\CScene</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayScene.h">
+      <Filter>헤더 파일\CScene</Filter>
+    </ClInclude>
+    <ClInclude Include="CModScene.h">
+      <Filter>헤더 파일\CScene</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene.h">
+      <Filter>헤더 파일\CScene</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourcePath.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CD3D.h">
+      <Filter>헤더 파일\System\CD3D</Filter>
+    </ClInclude>
+    <ClInclude Include="CRenderer3D.h">
+      <Filter>헤더 파일\System\CD3D</Filter>
+    </ClInclude>
+    <ClInclude Include="CSpaceRenderer.h">
+      <Filter>헤더 파일\System\CD3D</Filter>
+    </ClInclude>
+    <ClInclude Include="CPostProcess.h">
+      <Filter>헤더 파일\System\CD3D</Filter>
+    </ClInclude>
+    <ClInclude Include="CSpaceBackground.h">
+      <Filter>헤더 파일\System\CD3D</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>헤더 파일\System\CD3D</Filter>
+    </ClInclude>
+    <ClInclude Include="CTextureManager.h">
+      <Filter>헤더 파일\System</Filter>
+    </ClInclude>
+    <ClInclude Include="CButton.h">
+      <Filter>헤더 파일\System\CD3D</Filter>
+    </ClInclude>
+    <ClInclude Include="CSettingInfo.h">
+      <Filter>헤더 파일\CScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSetting.h">
+      <Filter>헤더 파일\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CThink.h">
+      <Filter>헤더 파일\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="CItemEffect.h">
+      <Filter>헤더 파일\System</Filter>
+    </ClInclude>
+    <ClInclude Include="CItemEffectManager.h">
+      <Filter>헤더 파일\System</Filter>
+    </ClInclude>
+    <ClInclude Include="CLoadingScene.h">
+      <Filter>헤더 파일\CScene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameManager.cpp">
+      <Filter>소스 파일\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CItem.cpp">
+      <Filter>소스 파일\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="CDart.cpp">
+      <Filter>소스 파일\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="CCom.cpp">
+      <Filter>소스 파일\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="CTarget.cpp">
+      <Filter>소스 파일\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayer.cpp">
+      <Filter>소스 파일\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="CStatus.cpp">
+      <Filter>소스 파일\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollision.cpp">
+      <Filter>소스 파일\System</Filter>
+    </ClCompile>
+    <ClCompile Include="CEffect.cpp">
+      <Filter>소스 파일\System</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyProc.cpp">
+      <Filter>소스 파일\System</Filter>
+    </ClCompile>
+    <ClCompile Include="WinProc.cpp">
+      <Filter>소스 파일\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
+      <Filter>소스 파일\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CSettingScene.cpp">
+      <Filter>소스 파일\CScene</Filter>
+    </ClCompile>
+    <ClCompile Include="CTitleScene.cpp">
+      <Filter>소스 파일\CScene</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayScene.cpp">
+      <Filter>소스 파일\CScene</Filter>
+    </ClCompile>
+    <ClCompile Include="CModScene.cpp">
+      <Filter>소스 파일\CScene</Filter>
+    </ClCompile>
+    <ClCompile Include="CRenderer3D.cpp">
+      <Filter>소스 파일\System\CD3D</Filter>
+    </ClCompile>
+    <ClCompile Include="CRendererMesh.cpp">
+      <Filter>소스 파일\System\CD3D</Filter>
+    </ClCompile>
+    <ClCompile Include="CSpaceBackMesh.cpp">
+      <Filter>소스 파일\System\CD3D</Filter>
+    </ClCompile>
+    <ClCompile Include="CSpaceBackground.cpp">
+      <Filter>소스 파일\System\CD3D</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>소스 파일\System\CD3D</Filter>
+    </ClCompile>
+    <ClCompile Include="CSpaceRenderer.cpp">
+      <Filter>소스 파일\System\CD3D</Filter>
+    </ClCompile>
+    <ClCompile Include="CTextrureManager.cpp">
+      <Filter>소스 파일\System</Filter>
+    </ClCompile>
+    <ClCompile Include="CPostProcess.cpp">
+      <Filter>소스 파일\System\CD3D</Filter>
+    </ClCompile>
+    <ClCompile Include="CD3D.cpp">
+      <Filter>소스 파일\System\CD3D</Filter>
+    </ClCompile>
+    <ClCompile Include="CButton.cpp">
+      <Filter>소스 파일\System\CD3D</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSetting.cpp">
+      <Filter>소스 파일\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CThink.cpp">
+      <Filter>소스 파일\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="CThink_Target.cpp">
+      <Filter>소스 파일\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="CThink_Risk.cpp">
+      <Filter>소스 파일\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="CThink_Item.cpp">
+      <Filter>소스 파일\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="CThink_Cube.cpp">
+      <Filter>소스 파일\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="CThink_Difficulty.cpp">
+      <Filter>소스 파일\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlatSceneUI.cpp">
+      <Filter>소스 파일\CScene</Filter>
+    </ClCompile>
+    <ClCompile Include="CItemEffectManager.cpp">
+      <Filter>소스 파일\System</Filter>
+    </ClCompile>
+    <ClCompile Include="CEffectItem.cpp">
+      <Filter>소스 파일\System</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemEffectRender.cpp">
+      <Filter>소스 파일\System</Filter>
+    </ClCompile>
+    <ClCompile Include="CLoadingScene.cpp">
+      <Filter>소스 파일\CScene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resouce.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
