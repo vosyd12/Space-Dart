@@ -44,3 +44,11 @@ Hover, Pressed, Clicked 상태와 UI 렌더링을 관리했습니다.
 
 ### Collision & Score
 다트의 실제 충돌 위치를 기준으로 다트판의 영역과 점수를 계산하도록 구현했습니다.
+
+| System | Main Source |
+| --- | --- |
+| Scene Management | `Dart Shot/CGameManager.cpp`, `Dart Shot/CScene.h` |
+| Input / UI | `Dart Shot/KeyProc.cpp`, `Dart Shot/CButton.cpp` |
+| Computer Player | `Dart Shot/CThink.cpp`, `Dart Shot/CThink_Target.cpp`, `Dart Shot/CThink_Item.cpp`, `Dart Shot/CThink_Difficulty.cpp` |
+| Space Rendering | `Dart Shot/CSpaceBackground.cpp`, `Dart Shot/CSpaceRenderer.cpp` |
+| Collision / Score | `Dart Shot/CCollision.cpp`, `Dart Shot/CDart.cpp` |
