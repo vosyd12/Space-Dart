@@ -1,231 +1,117 @@
 # Space Dart
 
-C++과 DirectX 9을 사용하여 직접 구현한 3D 다트 아케이드 게임입니다.
+**C++과 DirectX 9으로 제작한 1인 개발 3D 다트 아케이드 게임**입니다.
 
-게임의 기본적인 렌더링부터 입력 처리, Scene 관리, 충돌 및 점수 계산,
-컴퓨터 플레이어의 행동 로직, 우주 배경 렌더링 등을 직접 구현했습니다.
+기본적인 다트 규칙에 직접 조작하는 비행 경험과 아이템을 결합했습니다. 렌더링, 입력, Scene 전환, 충돌·점수 판정, 규칙 기반 컴퓨터 플레이어, 우주 배경 연출을 구현하며 **기능이 실제 플레이로 연결되는 과정**을 경험했습니다.
 
 ![Space Dart Gameplay](docs/images/gameplay.PNG)
 
----
+## 프로젝트 정보
 
-## 개발 정보
+| 항목 | 내용 |
+| --- | --- |
+| 개발 기간 | **2026.05 ~ 2026.08** |
+| 출시일 | **2026.09.08** |
+| 현재 상태 | **출시 완료** |
+| 개발 인원 | 1인 |
+| 언어 | C++ |
+| 그래픽 API | DirectX 9 |
+| 플랫폼 / 개발 환경 | Windows / Visual Studio |
 
-- 개발 기간: 2026.05 ~ 2026.08
-- 개발 인원: 1인
-- 프로젝트 형태: 개인 프로젝트
-- 현재 상태: 출시 준비 중
+## 1. 시작과 개발 방향의 변화
 
----
+DirectX 9을 공부하며 간단한 도형을 렌더링하고 움직여보는 과정에서 다트 게임을 구상했습니다. 처음에는 다트를 목표에 던지는 방식으로 접근했지만, **다트를 직접 조종한다면 어떨까?**라는 생각에서 방향을 바꿨습니다. 이후 우주 공간을 이동하는 다트라는 설정과 게임 규칙을 결합했습니다.
 
-## 개발 환경
+처음부터 모든 화면과 시스템을 설계한 것은 아닙니다. 플레이 화면에 필요한 기능을 추가하다가 Title, Play, Setting 등의 역할을 구분해야 할 필요성을 느꼈고, 점차 코드를 구조화했습니다.
 
-- Language: C++
-- Graphics API: DirectX 9
-- Platform: Windows
-- IDE: Visual Studio
+## 2. 핵심 구현
 
----
+### Scene 관리 — 화면별 책임 분리
 
-# What I Learned
+Title, Play, Setting 등 화면을 Scene 단위로 구분하고 `CGameManager`에서 생성과 전환을 관리했습니다. 플레이 도중 설정 화면에 진입할 때는 기존 Play Scene을 보관하고, 돌아올 때 복원하여 점수·턴·아이템 상태가 유지되도록 처리했습니다.
 
-Space Dart를 개발하면서 C++을 단순히 문법을 사용하는 언어가 아니라,
-게임에 필요한 기능을 구조화하고 실제 플레이 가능한 시스템으로 연결하는 도구로 사용했습니다.
-
-기능을 구현할 때는 처음부터 모든 기능을 완성하려 하기보다
-필요한 요소를 작은 단위로 나누어 구현하고 결과를 확인하는 방식으로 개발했습니다.
-
-예상과 다른 결과가 발생했을 때는 단순히 코드를 수정하는 것이 아니라
-관련된 값과 코드의 실행 흐름을 하나씩 확인하면서 원인을 좁혀갔습니다.
-
-이 프로젝트를 통해 다음과 같은 개발 방식을 경험했습니다.
-
-- 기능의 역할을 나누고 클래스와 Scene 단위로 구조화하는 방법
-- 입력 → 게임 로직 → 렌더링으로 이어지는 게임의 실행 흐름
-- 예상과 다른 결과가 발생했을 때 값과 코드 흐름을 확인하며 원인을 추적하는 방법
-- 익숙하지 않은 기능을 작은 단위부터 구현하고 결과를 확인하며 확장하는 방법
-
-특히 게임을 완성하는 과정에서 단순히 기능을 구현하는 것뿐만 아니라,
-**왜 문제가 발생했는지 확인하고 필요한 기능을 직접 설계하여 해결하는 과정이 중요하다는 것을 배웠습니다.**
-
----
-
-# 주요 기능
-
-## 1. Scene Management
-
-Title, Play, Setting 등의 화면을 Scene 단위로 분리하고,
-Manager를 통해 Scene의 생성, 전환 및 실행 흐름을 관리하도록 구성했습니다.
-
-각 화면의 역할을 분리하여 하나의 코드에 게임의 전체 흐름이 집중되지 않도록 구성했습니다.
+- 관련 코드: [CGameManager.cpp](Space%20Dart/CGameManager.cpp) · [CScene.h](Space%20Dart/CScene.h)
 
 ![Title Scene](docs/images/title.PNG)
 
-### 주요 구성
+### 입력과 UI — 한 번의 입력을 한 번의 행동으로
 
-- Title Scene
-- Play Scene
-- Setting Scene
-- Scene 전환 관리
+WinAPI 입력 상태를 프레임별로 비교해 키·마우스 입력을 처리했습니다. 현재 프레임과 이전 프레임을 구분하여 버튼을 누르고 있는 상태와 **새로 눌린 순간**을 구분하도록 했습니다. UI 버튼은 `CButton`으로 별도 관리했습니다.
 
----
+- 관련 코드: [KeyProc.cpp](Space%20Dart/KeyProc.cpp) · [CButton.cpp](Space%20Dart/CButton.cpp)
 
-## 2. Input & UI
+### 컴퓨터 플레이어 — 상황에 따라 목표를 선택하는 규칙 기반 AI
 
-WinAPI 입력을 프레임 단위로 처리하고,
-현재 프레임과 이전 프레임의 입력 상태를 비교하여 키와 마우스 입력을 처리했습니다.
+무작위로 다트를 던지는 대신, 현재 점수와 게임 상황을 바탕으로 **후보 생성 → 가치 평가 → 목표 선택 → 조준**의 흐름으로 판단하도록 구현했습니다.
 
-이를 통해 버튼을 한 번 클릭했을 때 여러 번 입력되는 문제를 방지하도록 구현했습니다.
+- **목표 후보:** 득점, 마무리, 다음 턴 준비, 안전한 선택 등을 생성합니다.
+- **평가 기준:** 예상 점수, 마무리 가능성, 안정성, 버스트 위험을 반영합니다.
+- **난이도 차이:** 판단 점수와 조준에 오차를 적용해 난이도별 차이를 만듭니다.
+- **상황 대응:** 아이템·획득 가능한 큐브를 고려하고, 움직이는 과녁의 위치를 예측해 조준을 보정합니다.
 
-DirectX 환경에서 UI를 처리하기 위해 `CButton` 클래스를 별도로 구현했습니다.
+이는 머신러닝 모델이 아닌 **직접 작성한 규칙과 평가식 기반의 게임 AI**입니다.
 
-버튼의 상태를 구분하여 마우스 입력에 따라 UI의 상태와 렌더링이 변경되도록 구성했습니다.
-
-- Hover
-- Pressed
-- Clicked
-
-![Settings](docs/images/settings.PNG)
-
----
-
-## 3. Computer Player
-
-컴퓨터 플레이어가 단순히 임의의 위치에 다트를 던지는 것이 아니라,
-현재 게임 상황을 기준으로 목표와 행동을 선택하도록 규칙 기반으로 구현했습니다.
-
-판단에 필요한 기능을 여러 단계로 나누어
-현재 상황에 따라 목표를 결정하도록 구성했습니다.
-
-### 주요 판단 요소
-
-- 난이도에 따른 명중 오차 조절
-- 현재 필요한 점수에 따른 목표 위치 결정
-- 아이템 보유 및 획득 여부 판단
-- 아이템 효과에 따른 행동 변경
-- 움직이는 다트판의 현재 위치와 이동 방향을 고려한 목표 보정
-- 게임 진행 상황에 따른 행동 전략 변경
+- 관련 코드: [CThink.cpp](Space%20Dart/CThink.cpp) · [CThink_Target.cpp](Space%20Dart/CThink_Target.cpp) · [CThink_Risk.cpp](Space%20Dart/CThink_Risk.cpp) · [CThink_Item.cpp](Space%20Dart/CThink_Item.cpp) · [CThink_Difficulty.cpp](Space%20Dart/CThink_Difficulty.cpp)
 
 ![Computer Player](docs/images/computer-player.PNG)
 
----
+### 아이템과 게임 규칙 — 같은 조작에 다른 판단을 더하기
 
-## 4. Space Rendering
+기본 다트 규칙 외에도 아이템 획득·사용과 효과 적용을 구현했습니다. 아이템은 점수나 과녁 상태, 투척 조건 등에 영향을 주고, 컴퓨터 플레이어 역시 상황에 따라 아이템 사용을 판단합니다. **조준과 점수 계산만 반복하는 흐름에 선택 요소를 추가**하려는 목적이었습니다.
 
-단순한 배경 텍스처만 사용하는 대신
-공간감을 표현하기 위해 별과 유성을 직접 구현했습니다.
-
-처음에는 별 이미지를 여러 위치에 배치했지만,
-이미지가 공간에 떠 있는 것처럼 보여 원하는 깊이감을 표현하기 어려웠습니다.
-
-이를 개선하기 위해 별을 거리별로 나누고
-크기, 밝기, 반짝임의 속도와 강도를 다르게 설정했습니다.
-
-유성은 카메라와의 거리를 기준으로 비율값을 계산하여
-거리에 따라 다음 요소가 달라지도록 구성했습니다.
-
-- 이동 속도
-- 크기
-- 폭
-- 꼬리 길이
-- 밝기
-
-이를 통해 같은 형태의 오브젝트가 반복적으로 이동하는 것보다
-거리감이 느껴지는 우주 공간을 표현하고자 했습니다.
-
-![Space Rendering](docs/images/space-rendering.PNG)
-
----
-
-## 5. Collision & Score
-
-다트판의 각 영역과 실제 다트가 충돌한 위치를 기준으로
-점수를 계산하도록 구현했습니다.
-
-초기에는 다트가 다트판에 정상적으로 맞았음에도
-화면에서 보이는 위치와 실제 계산된 점수가 일치하지 않는 문제가 있었습니다.
-
-처음에는 점수 계산 로직을 확인했지만,
-문제의 원인은 점수 공식이 아니라 **충돌 위치의 기준 좌표**였습니다.
-
-다트 오브젝트의 위치와 실제 다트의 핀이 접촉하는 위치가 달랐기 때문에
-충돌 기준을 다트의 실제 핀 위치로 다시 설정했습니다.
-
-이후 여러 영역에 다트를 던져
-화면상의 충돌 위치와 계산된 점수가 일치하는지 확인했습니다.
-
-![Collision and Score](docs/images/collision-score.PNG)
-
----
-
-## 6. Item & Game Rule
-
-게임에는 기본적인 다트 플레이 외에도
-게임 상황에 변화를 주는 아이템과 규칙을 구현했습니다.
-
-아이템에 따라 다트판이나 플레이 상황에 변화가 발생하며,
-컴퓨터 플레이어 역시 현재 적용된 효과를 확인하여 행동을 변경하도록 구성했습니다.
+- 관련 코드: [CItem.cpp](Space%20Dart/CItem.cpp) · [CItemEffectManager.cpp](Space%20Dart/CItemEffectManager.cpp) · [CPlayScene.cpp](Space%20Dart/CPlayScene.cpp)
 
 ![Item Effect](docs/images/item-effect.PNG)
 
----
+## 3. 문제 해결과 개선 과정
 
-# Gameplay
+### 충돌 판정 — 보이는 명중 위치와 실제 점수가 달랐던 문제
 
-Space Dart는 일반적인 다트 규칙을 기반으로
-여러 게임 모드와 아이템 요소를 결합한 3D 다트 게임입니다.
+**문제**  
+다트가 과녁에 맞았는데도 화면에서 보이는 명중 위치와 계산된 점수가 일치하지 않았습니다. 처음에는 점수 계산식을 의심했지만, 실제 원인은 판정에 사용하는 **위치 기준**에 있었습니다.
 
-플레이어는 다트를 조준하여 목표 지점에 던지고,
-다트가 충돌한 위치를 기준으로 점수가 계산됩니다.
+**원인과 수정**  
+다트 오브젝트의 위치와 실제 핀 끝 위치는 다릅니다. 또한 한 프레임에 다트가 과녁 평면을 지나갈 수 있으므로, 현재 위치를 그대로 점수 계산에 사용하면 오차가 생깁니다. 따라서 **다트 끝 위치를 기준으로 과녁 평면과 만나는 지점을 보정**한 뒤, 해당 좌표로 점수 영역을 계산하도록 변경했습니다.
 
-게임 중에는 다트판의 상태와 아이템 효과 등에 따라
-조준 조건이 달라질 수 있습니다.
+**검증**  
+과녁의 여러 영역을 겨냥해 화면상의 명중 위치와 점수 결과를 비교했습니다. 이 경험으로 수식만 확인하는 것보다 **어떤 좌표를 기준으로 계산하는지 추적하는 과정**이 중요하다는 점을 배웠습니다.
 
-![Gameplay](docs/images/gameplay.PNG)
+- 관련 코드: [CPlayScene.cpp](Space%20Dart/CPlayScene.cpp) · [CCollision.cpp](Space%20Dart/CCollision.cpp) · [CDart.cpp](Space%20Dart/CDart.cpp)
 
----
+![Collision and Score](docs/images/collision-score.PNG)
 
-# 현재 개선 중인 부분
+### 우주 배경 — 이미지를 배치하는 것에서 공간감을 표현하는 것으로
 
-현재 기본적인 게임 플레이와 주요 시스템은 구현되어 있으며,
-출시를 목표로 추가적인 완성도 개선을 진행하고 있습니다.
+**문제**  
+초기에는 별 이미지를 여러 위치에 배치했지만, 화면에 붙은 이미지처럼 보여 거리감이 부족했습니다.
 
-### Sound
+**개선**  
+별의 거리와 역할에 따라 크기·밝기·반짝임을 다르게 표현하고, 카메라 이동에 따른 움직임을 적용했습니다. 유성은 진행 방향과 거리를 고려해 머리·꼬리·잔상을 구성했으며, 반투명 폴리곤을 겹쳐 빛이 번지는 형태를 표현했습니다.
 
-현재 부족한 사운드 요소를 추가하여
-다트 투척, 충돌, UI 및 게임 상황에 따른 피드백을 강화할 예정입니다.
+**배운 점**  
+같은 이미지를 많이 배치하는 것보다 **거리, 움직임, 밝기의 관계를 일관되게 설정하는 것**이 공간감을 전달하는 데 중요했습니다.
 
-### Space Background
+> 우주 배경 작업 기간은 약 **한 달 반**이며, 위에 기재한 전체 프로젝트 개발 기간과는 구분됩니다.
 
-현재 구현된 별과 유성에 더해
-블랙홀과 행성 등의 우주 오브젝트를 추가하고,
-각 요소의 표현 품질을 개선할 예정입니다.
+- 관련 코드: [CSpaceBackground.cpp](Space%20Dart/CSpaceBackground.cpp) · [CSpaceRenderer.cpp](Space%20Dart/CSpaceRenderer.cpp) · [CPostProcess.cpp](Space%20Dart/CPostProcess.cpp)
 
-### Story Scene
+![Space Rendering](docs/images/space-rendering.PNG)
 
-현재 스토리 Scene은 비주얼 노벨과 유사한 대화 방식으로 구현되어 있습니다.
+## 4. 프로젝트를 통해 배운 점
 
-향후에는 두 캐릭터가 한 화면에 등장하도록 구성하고,
-현재 대화 중인 캐릭터를 확대하여 대화 주체를 명확하게 표현할 예정입니다.
+처음에는 화면에 필요한 기능을 하나씩 붙이는 방식으로 개발했습니다. 기능이 늘어나자 **역할을 나누고 실행 흐름을 관리하는 구조**의 필요성을 느꼈습니다.
 
-또한 캐릭터의 입 모양 애니메이션을 추가하여
-대화 장면의 시각적 완성도를 높일 계획입니다.
+특히 충돌 판정과 렌더링 문제를 겪으면서, 겉으로 보이는 결과만 수정하기보다 **문제의 발생 조건과 데이터 흐름을 추적하고, 수정 후 실제 플레이에서 확인하는 과정**을 중요하게 생각하게 됐습니다.
 
----
+이 프로젝트는 완벽한 설계에서 출발한 결과물이 아니라, 직접 만들고 실패를 확인하며 개선한 첫 개인 게임 개발 경험입니다.
 
-# Repository
+## 주요 소스 코드 안내
 
-전체 소스 코드는 이 Repository에서 확인할 수 있습니다.
-
-C++과 DirectX 9을 사용하여 게임의 구조부터 렌더링,
-입력, 충돌, UI, 컴퓨터 플레이어 로직까지 직접 구현했습니다.
-
-## Source Code Guide
-
-| System | Main Source |
+| 영역 | 소스 코드 |
 | --- | --- |
-| Scene Management | `Space Dart/CGameManager.cpp`, `Space Dart/CScene.h` |
-| Input / UI | `Space Dart/KeyProc.cpp`, `Space Dart/CButton.cpp` |
-| Computer Player | `Space Dart/CThink.cpp`, `Space Dart/CThink_Target.cpp`, `Space Dart/CThink_Risk.cpp`, `Space Dart/CThink_Item.cpp`, `Space Dart/CThink_Difficulty.cpp` |
-| Space Rendering | `Space Dart/CSpaceBackground.cpp`, `Space Dart/CSpaceRenderer.cpp` |
-| Collision / Score | `Space Dart/CCollision.cpp`, `Space Dart/CDart.cpp` |
+| Scene 전환·관리 | [CGameManager.cpp](Space%20Dart/CGameManager.cpp) |
+| 입력·UI | [KeyProc.cpp](Space%20Dart/KeyProc.cpp), [CButton.cpp](Space%20Dart/CButton.cpp) |
+| 컴퓨터 플레이어 | [CThink.cpp](Space%20Dart/CThink.cpp), [CThink_Target.cpp](Space%20Dart/CThink_Target.cpp) |
+| 충돌·점수 계산 | [CPlayScene.cpp](Space%20Dart/CPlayScene.cpp), [CCollision.cpp](Space%20Dart/CCollision.cpp) |
+| 우주 배경·후처리 | [CSpaceBackground.cpp](Space%20Dart/CSpaceBackground.cpp), [CSpaceRenderer.cpp](Space%20Dart/CSpaceRenderer.cpp), [CPostProcess.cpp](Space%20Dart/CPostProcess.cpp) |
+| 아이템 | [CItem.cpp](Space%20Dart/CItem.cpp), [CItemEffectManager.cpp](Space%20Dart/CItemEffectManager.cpp) |
